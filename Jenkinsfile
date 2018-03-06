@@ -1,6 +1,11 @@
 pipeline {
   agent {
     docker {
+      if (isUnix()) {
+        echo "is Unix"
+      } else {
+        echo "not Unix"
+      }
       image 'maven:3-alpine'
       args '-v //.m2:/root/.m2'
     }
